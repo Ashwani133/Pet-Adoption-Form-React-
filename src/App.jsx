@@ -3,7 +3,7 @@ import './App.css'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
 import { Adopter } from './components/Adopter'
-import { FormInputs } from './components/FormInputs'
+import {FormInputs} from './components/FormInputs'
 
 function App() {
   const [showPetAdoptionForm, setShowPetAdoptionForm] = useState(false);
