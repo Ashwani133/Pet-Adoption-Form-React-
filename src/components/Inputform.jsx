@@ -1,6 +1,6 @@
 import { useState } from "react"
 import './Formsinputs.css'
-export function FormInputs({setShowPetAdoptionForm, setData, data}){
+export function Inputform({setShowPetAdoptionForm, setData, data}){
 
   const[petName, setPetName] = useState("")
   const[petType, setPetType] = useState("")
