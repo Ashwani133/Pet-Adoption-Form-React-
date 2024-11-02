@@ -3,7 +3,7 @@ import './App.css'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
 import { Adopter } from './components/Adopter'
-import { Forminputs } from './components/Formsinputs'
+import { FormInputs } from './components/FormInputs'
 
 function App() {
   const [showPetAdoptionForm, setShowPetAdoptionForm] = useState(false);
@@ -29,7 +29,7 @@ function App() {
           <div className='table-heading'>Your Email</div>
           <div className='table-heading'>Your Phone</div>
       </div>
-      {showPetAdoptionForm?<Forminputs setShowPetAdoptionForm={setShowPetAdoptionForm} setData={setData} data={data}/>:
+      {showPetAdoptionForm?<FormInputs setShowPetAdoptionForm={setShowPetAdoptionForm} setData={setData} data={data}/>:
       data.map((pet,index) => 
       <Adopter 
       index={index+1}
