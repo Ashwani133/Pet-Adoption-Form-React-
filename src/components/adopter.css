@@ -1,0 +1,28 @@
+.card{
+    display: flex;
+    height: 70px;
+}
+.photo{
+    width: 70px;
+    border: 1px solid black;
+}
+
+.details{
+    width: 100%;
+}
+
+.adopter-details-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding:.5em;
+    border:2px solid #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-width: 1100px;
+}
+
+.adopter-details{
+    font-weight:700;
+    font-size:1em;
+    color:white;
+    width: 16.66%;
+}

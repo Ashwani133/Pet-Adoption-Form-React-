@@ -1,0 +1,21 @@
+.input-wrapper{
+    text-align:center;
+    min-width: 1100px;
+}
+
+.input-container{
+    padding:.5em;
+    border:2px solid #fff;
+    margin-bottom:1em;
+}
+
+.submit-btn{
+    width:25%;
+    font-size:0.8em;
+    margin-right:1em
+}
+
+.cancel-btn{
+    width:25%;
+    font-size:0.8em
+}
