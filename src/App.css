@@ -48,6 +48,7 @@
     display: flex;
     justify-content: space-between;
     min-width: 1100px;
+    background-color: rgba(0, 0, 0, 0.477);
 }
 .table-heading{
     font-weight:700;

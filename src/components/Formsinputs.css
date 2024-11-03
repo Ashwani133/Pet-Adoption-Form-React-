@@ -19,3 +19,12 @@
     width:25%;
     font-size:0.8em
 }
+
+.errorText{
+    color:#fff;
+    background-color: rgba(0, 0, 0, 0.477);
+    margin-top:1em;
+    padding:0.5em;
+    border-radius:20px;
+    font-weight:500
+}

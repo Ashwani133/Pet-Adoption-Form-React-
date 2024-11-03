@@ -31,8 +31,8 @@ function App() {
       </div>
       {showPetAdoptionForm?<Inputform setShowPetAdoptionForm={setShowPetAdoptionForm} setData={setData} data={data}/>:
       data.map((pet,index) => 
-      <Adopter 
-      index={index+1}
+      <Adopter
+      index={index+1+"."}
       petName={pet.petName}
       type={pet.petType}
       breed={pet.breed}

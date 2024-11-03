@@ -1,5 +1,7 @@
 import { useState } from "react"
 import './Formsinputs.css'
+import { z } from "zod";
+
 export function Inputform({setShowPetAdoptionForm, setData, data}){
 
   const[petName, setPetName] = useState("")
@@ -78,9 +80,33 @@ export function Inputform({setShowPetAdoptionForm, setData, data}){
         alert("Please fill all the details!")
         return;
       }
-      setData([...data,{petName:petName, petType:petType, breed:breed,adopterName:adopterName, email:email,phone:phone}])
 
-      setShowPetAdoptionForm(false);
+      const adopterSchema =z.object({
+        petName:z.string().min(3),
+        petType:z.string().min(3),
+        breed:z.string().min(3),
+        adopterName:z.string().min(3),
+        email:z.string().email(),
+        phone:z.string()
+        .regex(/^\d{10}$/),
+      })
+
+      const result = adopterSchema.safeParse({
+        petName:petName,
+        petType:petType,
+        breed:breed,
+        adopterName:adopterName,
+        email:email,
+        phone:phone
+      })
+
+      if(result.success){
+        setData([...data,{petName:petName, petType:petType, breed:breed,adopterName:adopterName, email:email,phone:phone}])
+
+        setShowPetAdoptionForm(false);
+      }else{
+        setErrorText(result.error.format()["email"]["_errors"][0]);
+      }
     }
 
     return <div className="input-wrapper">
@@ -92,13 +118,13 @@ export function Inputform({setShowPetAdoptionForm, setData, data}){
             <th><input onChange={handleBreed} value={breed} style={{height:"2em"}} type="text" placeholder="Enter Pet Breed"/></th>
             <th><input onChange={handleAdopterName} value={adopterName} style={{height:"2em"}} type="text" placeholder="Enter Your Name"/></th>
             <th><input onChange={handleEmail} value={email} style={{height:"2em"}} type="text" placeholder="Enter Your Email"/></th>
-            <th><input onChange={handlePhone} value={phone} style={{height:"2em"}} type="text" placeholder="Enter Your Phone"/></th>
+            <th><input onChange={handlePhone} value={phone} style={{height:"2em"}} type="number" placeholder="Enter Your Phone"/></th>
         </tr>
       </table>
     </div>
     <button onClick={addAdopter} className="submit-btn">Submit</button>
     <button onClick={()=>setShowPetAdoptionForm(false)} className="cancel-btn">Cancel</button>
-    <div style={{color:"#fff"}}>
+    <div className="errorText">
     {errorText}
     </div>
     </div> 
