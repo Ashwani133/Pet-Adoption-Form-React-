@@ -46,7 +46,7 @@ export function Inputform({setShowPetAdoptionForm, setData, data}){
       const val = e.target.value;
       setAdopterName(val)
       if(val.length<3){
-        setErrorText("Adopter name should be at least letters long!")
+        setErrorText("Adopter name should be at least 3 letters long!")
       }else{
         setErrorText("");
       }
@@ -82,13 +82,13 @@ export function Inputform({setShowPetAdoptionForm, setData, data}){
       }
 
       const adopterSchema =z.object({
-        petName:z.string().min(3),
-        petType:z.string().min(3),
-        breed:z.string().min(3),
-        adopterName:z.string().min(3),
-        email:z.string().email(),
+        petName:z.string().min(3,{message:"Pet name should be at least 3 letters long."}),
+        petType:z.string().min(3,{message:"Pet type should be at least 3 letters long."}),
+        breed:z.string().min(3,{message:"Breed should be 3 letters long."}),
+        adopterName:z.string().min(3,{message:"Adopter Name should be 3 letters long."}),
+        email:z.string().email({message:"email should be of type john@example.com."}),
         phone:z.string()
-        .regex(/^\d{10}$/),
+        .regex(/^\d{10}$/,{message:"Phone number must be 10 digit long."}),
       })
 
       const result = adopterSchema.safeParse({
@@ -105,7 +105,9 @@ export function Inputform({setShowPetAdoptionForm, setData, data}){
 
         setShowPetAdoptionForm(false);
       }else{
-        setErrorText(result.error.format()["email"]["_errors"][0]);
+        const resultError = result.error.format();
+        const errorMsg = resultError[Object.keys(resultError)[1]]["_errors"][0];
+        setErrorText(errorMsg);
       }
     }
 
